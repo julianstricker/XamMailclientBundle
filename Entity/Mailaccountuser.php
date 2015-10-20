@@ -52,7 +52,7 @@ class Mailaccountuser implements Base\TenantInterface
      * @ORM\ManyToOne(targetEntity="Xxam\MailclientBundle\Entity\Mailaccount", inversedBy="mailaccountusers")
      * @ORM\JoinColumn(name="mailaccount_id", referencedColumnName="id")
      * */
-    private $mailaccounts;
+    private $mailaccount;
 
     public function __construct()
     {
@@ -111,17 +111,17 @@ class Mailaccountuser implements Base\TenantInterface
     /**
      * @return mixed
      */
-    public function getMailaccounts()
+    public function getMailaccount()
     {
-        return $this->mailaccounts;
+        return $this->mailaccount;
     }
 
     /**
-     * @param mixed $mailaccounts
+     * @param mixed $mailaccount
      */
-    public function setMailaccounts($mailaccounts)
+    public function setMailaccount($mailaccount)
     {
-        $this->mailaccounts = $mailaccounts;
+        $this->mailaccount = $mailaccount;
     }
 
 
