@@ -18,7 +18,7 @@ class MailclientBaseController extends Controller {
     
     protected function getUserMailaccountForId($mailaccountid){
         $user = $this->get('security.token_storage')->getToken()->getUser();
-        $mailaccountusers=$this->em->getRepository('XxamMailclientBundle:Mailaccountuser')->findByUserId($user->getId());
+        $mailaccountusers=$this->getDoctrine()->getManager()->getRepository('XxamMailclientBundle:Mailaccountuser')->findByUserId($user->getId());
         $mailaccount=false;
         foreach ($mailaccountusers as $mau){
             $ma=$mau->getMailaccount();

@@ -27,7 +27,7 @@ class NewmailsWidgetController extends Controller
     {
         
         $user = $this->securityTokenStorage->getToken()->getUser();
-        $mailaccountusers=$this->em->getRepository('XxamMailclientBundle:Mailaccountuser')->findByUserId($user->getId());
+        $mailaccountusers=$this->getDoctrine()->getManager()->getRepository('XxamMailclientBundle:Mailaccountuser')->findByUserId($user->getId());
         $mailaccounts=Array();
         foreach($mailaccountusers as $mau){
             $ma=$mau->getMailaccount();

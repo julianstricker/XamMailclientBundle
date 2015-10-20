@@ -55,7 +55,7 @@ class MailclientController extends MailclientBaseController {
      */
     public function listfoldersAction() {
         $user = $this->get('security.token_storage')->getToken()->getUser();
-        $mailaccountusers=$this->em->getRepository('XxamMailclientBundle:Mailaccountuser')->findByUserId($user->getId());
+        $mailaccountusers=$this->getDoctrine()->getManager()->getRepository('XxamMailclientBundle:Mailaccountuser')->findByUserId($user->getId());
         $returndata=Array();
         foreach($mailaccountusers as $mailaccountuser){
             $mailaccount=$mailaccountuser->getMailaccount();
