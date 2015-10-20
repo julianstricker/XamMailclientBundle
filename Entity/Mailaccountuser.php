@@ -49,7 +49,7 @@ class Mailaccountuser implements Base\TenantInterface
 
     
     /**
-     * @ORM\ManyToOne(targetEntity="Xxam\MailaccountBundle\Entity\Mailaccount", inversedBy="mailaccountusers")
+     * @ORM\ManyToOne(targetEntity="Xxam\MailclientBundle\Entity\Mailaccount", inversedBy="mailaccountusers")
      * @ORM\JoinColumn(name="mailaccount_id", referencedColumnName="id")
      * */
     private $mailaccounts;
