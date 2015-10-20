@@ -17,10 +17,6 @@
     "xxam/xxam":"dev-develop",
     "php-imap/php-imap": "~2.0"
   },
-  "repositories" : [{
-    "type" : "vcs",
-    "url" : "https://github.com/julianstricker/xxam.git"
-  }],
   "autoload" : {
     "psr-0" : {
       "Xxam\\MailclientBundle\\" : ""
