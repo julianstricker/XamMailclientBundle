@@ -170,12 +170,11 @@ class Mailaccount implements Base\TenantInterface
      * @ORM\Column(type="datetime")
      */
     private $updated;
-    
+
     /**
-     * @ORM\ManyToMany(targetEntity="Xxam\UserBundle\Entity\User", mappedBy="mailaccounts")
-     * @ORM\JoinTable(name="user_mailaccount")
-     * */
-    private $users;
+     * @ORM\OneToMany(targetEntity="Xxam\MailclientBundle\Entity\Mailaccountuser", mappedBy="mailaccount", cascade={"persist", "remove"})
+     */
+    private $mailaccountusers;
 
     public function __construct()
     {
@@ -655,36 +654,36 @@ class Mailaccount implements Base\TenantInterface
     }
 
     /**
-     * Add users
+     * Add mailaccountusers
      *
-     * @param \Xxam\UserBundle\Entity\User $users
+     * @param \Xxam\MailclientBundle\Entity\Mailaccountuser $mailaccountusers
      * @return Mailaccount
      */
-    public function addUser(\Xxam\UserBundle\Entity\User $users)
+    public function addMailaccountuser(\Xxam\MailclientBundle\Entity\Mailaccountuser $mailaccountusers)
     {
-        $this->users[] = $users;
+        $this->mailaccountusers[] = $mailaccountusers;
 
         return $this;
     }
 
     /**
-     * Remove users
+     * Remove mailaccountusers
      *
-     * @param \Xxam\UserBundle\Entity\User $users
+     * @param \Xxam\MailclientBundle\Entity\Mailaccountuser $mailaccountusers
      */
-    public function removeUser(\Xxam\UserBundle\Entity\User $users)
+    public function removeMailaccountuser(\Xxam\MailclientBundle\Entity\Mailaccountuser $mailaccountusers)
     {
-        $this->users->removeElement($users);
+        $this->mailaccountusers->removeElement($mailaccountusers);
     }
 
     /**
-     * Get users
+     * Get mailaccountusers
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
-    public function getUsers()
+    public function getMailaccountusers()
     {
-        return $this->users;
+        return $this->mailaccountusers;
     }
 
     /**
