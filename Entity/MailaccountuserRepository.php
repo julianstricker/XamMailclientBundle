@@ -14,10 +14,7 @@ class MailaccountuserRepository extends EntityRepository
 {
     
     public function findByUserId($user_id){
-        $query = $this->createQueryBuilder('e');
-        $query->andWhere('e.user_id',$user_id);
-
-        return $query->getQuery()->getResult();
+        return $this->findBy(array('user_id'=>$user_id));
     }
 
 }
