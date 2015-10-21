@@ -12,6 +12,7 @@ use Xxam\CoreBundle\Entity\Base as Base;
  *     indexes={
  *       @ORM\Index(name="ix_tenant_id", columns={"tenant_id"})
  *     })
+ * @ORM\Entity(repositoryClass="Xxam\MailclientBundle\Entity\MailaccountuserRepository")
  */
 class Mailaccountuser implements Base\TenantInterface
 {
