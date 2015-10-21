@@ -348,9 +348,9 @@ class MailclientController extends MailclientBaseController {
         }
         
         //dump($params);
-        $mailaccounts=$user->getMailaccounts();
-        foreach($mailaccounts as $ma){
-            $params['mailaccounts'][]=$ma;
+        $mailaccountusers=$this->getDoctrine()->getManager()->getRepository('XxamMailclientBundle:Mailaccountuser')->findByUserId($user->getId());
+        foreach($mailaccountusers as $mailaccountuser){
+            $params['mailaccounts'][]=$mailaccountuser->getMailaccount();
         }
         return $this->render('XxamMailclientBundle:Mailclient:write.js.twig', $params);
     }
@@ -363,10 +363,10 @@ class MailclientController extends MailclientBaseController {
      */
     public function settingsAction(Request $request) {
         $user = $this->get('security.token_storage')->getToken()->getUser();
-        $mailaccounts=$user->getMailaccounts();
+        $mailaccountusers=$this->getDoctrine()->getManager()->getRepository('XxamMailclientBundle:Mailaccountuser')->findByUserId($user->getId());
         $mas=Array();
-        foreach($mailaccounts as $mailaccount){
-            $mas[]=$mailaccount;
+        foreach($mailaccountusers as $mailaccountuser){
+            $mas[]=$mailaccountuser->getMailaccount();
         }
         return $this->render('XxamMailclientBundle:Mailclient:settings.js.twig', array('mailaccounts'=>$mas));
     }
